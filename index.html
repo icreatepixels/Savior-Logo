@@ -72,6 +72,14 @@
             transform: translateY(0);
         }
 
+        /* Amenity Image Zoom on Hover */
+        .amenity-item img {
+            transition: transform 0.5s ease;
+        }
+        .amenity-item:hover img {
+            transform: scale(1.1);
+        }
+
         /* Testimonial Slider */
         .testimonial-slide {
             display: none;
@@ -83,6 +91,24 @@
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Nav Link Underline Animation */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #F37F32;
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
         }
     </style>
 </head>
@@ -98,7 +124,7 @@
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm py-2" id="navbar">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="flex items-center gap-2 group">
+            <a href="#" class="flex items-center gap-2 group transition-transform hover:scale-105 duration-300">
                 <!-- UPDATED: Increased Logo Size from h-12 to h-16 -->
                 <img src="https://github.com/icreatepixels/Savior-Logo/raw/932278654a3010394ff5dcc398edf041cb501962/savoirlogoheader.png" alt="Savoir Studio" class="h-16 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex';">
                 
@@ -111,32 +137,32 @@
 
             <!-- Desktop Nav -->
             <div class="hidden lg:flex items-center gap-8">
-                <a href="#home" class="font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide text-primary">Home</a>
-                <a href="#about" class="font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide">Studio</a>
-                <a href="#services" class="font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide">Services</a>
-                <a href="#amenities" class="font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide">Amenities</a>
+                <a href="#home" class="nav-link font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide text-primary">Home</a>
+                <a href="#about" class="nav-link font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide">Studio</a>
+                <a href="#services" class="nav-link font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide">Services</a>
+                <a href="#amenities" class="nav-link font-medium hover:text-primary transition-colors uppercase text-sm tracking-wide">Amenities</a>
             </div>
 
             <!-- RESTORED: Book Now Button -->
             <div class="hidden lg:block">
-                <a href="https://wa.me/919372708977" target="_blank" class="px-6 py-2 border-2 border-primary text-primary font-bold uppercase text-sm tracking-widest hover:bg-primary hover:text-white transition-all rounded-lg">
+                <a href="https://wa.me/919372708977" target="_blank" class="px-6 py-2 border-2 border-primary text-primary font-bold uppercase text-sm tracking-widest hover:bg-primary hover:text-white transition-all rounded-lg transform hover:-translate-y-1 hover:shadow-lg duration-300">
                     <i class="fab fa-whatsapp mr-2"></i>Book Now
                 </a>
             </div>
 
             <!-- Mobile Toggle -->
-            <button class="lg:hidden text-2xl text-gray-800" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+            <button class="lg:hidden text-2xl text-gray-800 transition-transform hover:rotate-90 duration-300" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden bg-white border-t lg:hidden p-6 space-y-4 shadow-xl absolute w-full z-50">
-            <a href="#home" class="block font-bold text-primary" onclick="toggleMenu()">Home</a>
-            <a href="#about" class="block font-bold text-gray-700" onclick="toggleMenu()">The Studio</a>
-            <a href="#services" class="block font-bold text-gray-700" onclick="toggleMenu()">Services</a>
-            <a href="#amenities" class="block font-bold text-gray-700" onclick="toggleMenu()">Amenities</a>
-            <a href="#contact" class="block font-bold text-gray-700" onclick="toggleMenu()">Contact</a>
+        <div id="mobile-menu" class="hidden bg-white border-t lg:hidden p-6 space-y-4 shadow-xl absolute w-full z-50 animate-fade-in-down">
+            <a href="#home" class="block font-bold text-primary hover:pl-2 transition-all duration-300" onclick="toggleMenu()">Home</a>
+            <a href="#about" class="block font-bold text-gray-700 hover:pl-2 hover:text-primary transition-all duration-300" onclick="toggleMenu()">The Studio</a>
+            <a href="#services" class="block font-bold text-gray-700 hover:pl-2 hover:text-primary transition-all duration-300" onclick="toggleMenu()">Services</a>
+            <a href="#amenities" class="block font-bold text-gray-700 hover:pl-2 hover:text-primary transition-all duration-300" onclick="toggleMenu()">Amenities</a>
+            <a href="#contact" class="block font-bold text-gray-700 hover:pl-2 hover:text-primary transition-all duration-300" onclick="toggleMenu()">Contact</a>
         </div>
     </nav>
     <!-- Header End -->
@@ -146,14 +172,14 @@
     <div id="home" class="relative w-full h-screen overflow-hidden bg-dark">
         <!-- Slide 1: Podcast Focus -->
         <div class="hero-slide active w-full h-full relative">
-            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=1920" class="w-full h-full object-cover opacity-30" alt="Podcast Studio">
+            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=1920" class="w-full h-full object-cover opacity-30 transform hover:scale-105 transition-transform duration-[20s]" alt="Podcast Studio">
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
                 <h5 class="text-primary font-bold text-xl uppercase tracking-[0.3em] mb-4 animate-bounce">Navi Mumbai's Largest</h5>
-                <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6">Premium Podcast<br>Studio</h1>
+                <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6 hover:text-primary transition-colors duration-300">Premium Podcast<br>Studio</h1>
                 <p class="text-xl max-w-2xl mb-8 font-light">Professional sound-treated rooms for crystal-clear audio and 4K video recording.</p>
                 <div class="flex gap-4">
-                    <a href="#services" class="px-8 py-3 bg-primary text-white font-bold uppercase tracking-widest hover:bg-orange-600 transition-all rounded">View Setups</a>
-                    <a href="#contact" class="px-8 py-3 border border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-dark transition-all rounded">Visit Us</a>
+                    <a href="#services" class="px-8 py-3 bg-primary text-white font-bold uppercase tracking-widest hover:bg-orange-600 transition-all rounded transform hover:-translate-y-1 hover:shadow-lg duration-300">View Setups</a>
+                    <a href="#contact" class="px-8 py-3 border border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-dark transition-all rounded transform hover:-translate-y-1 hover:shadow-lg duration-300">Visit Us</a>
                 </div>
             </div>
         </div>
@@ -161,23 +187,23 @@
         <!-- Slide 2: Cyclorama Focus -->
         <div class="hero-slide w-full h-full relative">
             <!-- UPDATED: Replaced hero banner background image -->
-            <img src="https://github.com/icreatepixels/Savior-Logo/blob/fe82457f47e9f025c6f3077750ef2081c4beedb5/Gemini_Generated_Image_lwue1clwue1clwue.png?raw=true" class="w-full h-full object-cover opacity-30" alt="Cyc Wall">
+            <img src="https://github.com/icreatepixels/Savior-Logo/blob/fe82457f47e9f025c6f3077750ef2081c4beedb5/Gemini_Generated_Image_lwue1clwue1clwue.png?raw=true" class="w-full h-full object-cover opacity-30 transform hover:scale-105 transition-transform duration-[20s]" alt="Cyc Wall">
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
                 <!-- UPDATED: Added animate-bounce class here -->
                 <h5 class="text-primary font-bold text-xl uppercase tracking-[0.3em] mb-4 animate-bounce">Infinite Possibilities</h5>
-                <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6">8ft x 8ft<br>Cyclorama Wall</h1>
+                <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6 hover:text-primary transition-colors duration-300">8ft x 8ft<br>Cyclorama Wall</h1>
                 <p class="text-xl max-w-2xl mb-8 font-light">First in Navi Mumbai. Perfect for fashion shoots, music videos, and creative projects.</p>
                 <div class="flex gap-4">
-                    <a href="#services" class="px-8 py-3 bg-primary text-white font-bold uppercase tracking-widest hover:bg-orange-600 transition-all rounded">Explore</a>
+                    <a href="#services" class="px-8 py-3 bg-primary text-white font-bold uppercase tracking-widest hover:bg-orange-600 transition-all rounded transform hover:-translate-y-1 hover:shadow-lg duration-300">Explore</a>
                 </div>
             </div>
         </div>
 
         <!-- Carousel Controls -->
-        <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 border border-white/30 text-white flex items-center justify-center hover:bg-primary hover:border-primary transition-all rounded-full">
+        <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 border border-white/30 text-white flex items-center justify-center hover:bg-primary hover:border-primary transition-all rounded-full transform hover:scale-110 duration-300">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 border border-white/30 text-white flex items-center justify-center hover:bg-primary hover:border-primary transition-all rounded-full">
+        <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 border border-white/30 text-white flex items-center justify-center hover:bg-primary hover:border-primary transition-all rounded-full transform hover:scale-110 duration-300">
             <i class="fas fa-chevron-right"></i>
         </button>
     </div>
@@ -187,7 +213,7 @@
     <!-- About Start -->
     <div id="about" class="py-24 bg-secondary">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <div class="transform transition-all duration-500 hover:translate-x-2">
                 <div class="mb-6">
                     <h5 class="text-primary font-bold uppercase tracking-widest mb-2">The Space</h5>
                     <h1 class="text-5xl font-heading font-bold text-dark">About Savoir Studio</h1>
@@ -202,28 +228,28 @@
                 </p>
 
                 <ul class="space-y-4 mb-8">
-                    <li class="flex items-center gap-3 bg-white p-3 border-l-4 border-primary shadow-sm">
+                    <li class="flex items-center gap-3 bg-white p-3 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow duration-300 hover:scale-[1.02] transform">
                         <i class="fas fa-check-circle text-primary text-xl"></i>
                         <span class="font-bold text-gray-800">4K+ Hours Recorded</span>
                     </li>
-                    <li class="flex items-center gap-3 bg-white p-3 border-l-4 border-primary shadow-sm">
+                    <li class="flex items-center gap-3 bg-white p-3 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow duration-300 hover:scale-[1.02] transform">
                         <i class="fas fa-check-circle text-primary text-xl"></i>
                         <span class="font-bold text-gray-800">200+ Happy Creators</span>
                     </li>
-                    <li class="flex items-center gap-3 bg-white p-3 border-l-4 border-primary shadow-sm">
+                    <li class="flex items-center gap-3 bg-white p-3 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow duration-300 hover:scale-[1.02] transform">
                         <i class="fas fa-check-circle text-primary text-xl"></i>
                         <span class="font-bold text-gray-800">24/7 Access Available</span>
                     </li>
                 </ul>
                 <div class="grid grid-cols-2 gap-4">
-                    <a href="#amenities" class="border-2 border-primary text-primary text-center py-3 font-bold uppercase hover:bg-primary hover:text-white transition-all rounded">Amenities</a>
-                    <a href="https://wa.me/919372708977" class="bg-primary text-white text-center py-3 font-bold uppercase hover:bg-dark transition-all rounded">Book Tour</a>
+                    <a href="#amenities" class="border-2 border-primary text-primary text-center py-3 font-bold uppercase hover:bg-primary hover:text-white transition-all rounded transform hover:-translate-y-1 hover:shadow-lg duration-300">Amenities</a>
+                    <a href="https://wa.me/919372708977" class="bg-primary text-white text-center py-3 font-bold uppercase hover:bg-dark transition-all rounded transform hover:-translate-y-1 hover:shadow-lg duration-300">Book Tour</a>
                 </div>
             </div>
-            <div class="relative">
-                <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 -z-10 rounded-tl-3xl"></div>
-                <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/20 -z-10 rounded-br-3xl"></div>
-                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80&w=800" class="w-full rounded-lg shadow-xl" alt="Studio Interior">
+            <div class="relative group">
+                <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 -z-10 rounded-tl-3xl transition-transform group-hover:scale-110 duration-500"></div>
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/20 -z-10 rounded-br-3xl transition-transform group-hover:scale-110 duration-500"></div>
+                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80&w=800" class="w-full rounded-lg shadow-xl transition-transform duration-500 group-hover:scale-[1.02]" alt="Studio Interior">
             </div>
         </div>
     </div>
@@ -241,13 +267,13 @@
         <div class="service-item group mb-0">
             <div class="grid md:grid-cols-2 items-center">
                 <div class="overflow-hidden h-96">
-                    <img class="zig-zag-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800" alt="Podcast">
+                    <img class="zig-zag-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800" alt="Podcast">
                 </div>
-                <div class="p-12 md:p-16 bg-white">
-                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl"><i class="fas fa-microphone-alt"></i></div>
+                <div class="p-12 md:p-16 bg-white group-hover:bg-gray-50 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl group-hover:scale-110 transition-transform duration-300"><i class="fas fa-microphone-alt"></i></div>
                     <h3 class="text-2xl font-heading font-bold uppercase mb-4 text-dark group-hover:text-primary transition-colors">Podcast Setups</h3>
                     <p class="mb-6 text-gray-600">High-end audio-visual infrastructure featuring Shure mics, 4K cameras, and professional lighting for broadcast-quality podcasts.</p>
-                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark">Book Slot <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark inline-flex items-center group/link">Book Slot <i class="fas fa-arrow-right ml-2 group-hover/link:translate-x-1 transition-transform"></i></a>
                 </div>
             </div>
         </div>
@@ -257,13 +283,13 @@
             <div class="grid md:grid-cols-2 items-center">
                 <div class="md:order-2 overflow-hidden h-96">
                     <!-- UPDATED: Replaced image for Cyc Wall -->
-                    <img class="zig-zag-img w-full h-full object-cover" src="https://github.com/icreatepixels/Savior-Logo/blob/fe82457f47e9f025c6f3077750ef2081c4beedb5/Gemini_Generated_Image_lwue1clwue1clwue.png?raw=true" alt="Cyclorama">
+                    <img class="zig-zag-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://github.com/icreatepixels/Savior-Logo/blob/fe82457f47e9f025c6f3077750ef2081c4beedb5/Gemini_Generated_Image_lwue1clwue1clwue.png?raw=true" alt="Cyclorama">
                 </div>
-                <div class="md:order-1 p-12 md:p-16 bg-secondary text-right">
-                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl ml-auto"><i class="fas fa-infinity"></i></div>
+                <div class="md:order-1 p-12 md:p-16 bg-secondary text-right group-hover:bg-orange-50 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl ml-auto group-hover:scale-110 transition-transform duration-300"><i class="fas fa-infinity"></i></div>
                     <h3 class="text-2xl font-heading font-bold uppercase mb-4 text-dark group-hover:text-primary transition-colors">Cyclorama Wall</h3>
                     <p class="mb-6 text-gray-600"><strong>First in Navi Mumbai!</strong> An 8ft x 8ft seamless infinity wall perfect for fashion shoots, music videos, and creative projects with RGB lighting.</p>
-                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark">Check Availability <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark inline-flex items-center group/link">Check Availability <i class="fas fa-arrow-right ml-2 group-hover/link:translate-x-1 transition-transform"></i></a>
                 </div>
             </div>
         </div>
@@ -272,13 +298,13 @@
         <div class="service-item group mb-0">
             <div class="grid md:grid-cols-2 items-center">
                 <div class="overflow-hidden h-96">
-                    <img class="zig-zag-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=800" alt="UGC Setup">
+                    <img class="zig-zag-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=800" alt="UGC Setup">
                 </div>
-                <div class="p-12 md:p-16 bg-white">
-                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl"><i class="fas fa-mobile-alt"></i></div>
+                <div class="p-12 md:p-16 bg-white group-hover:bg-gray-50 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl group-hover:scale-110 transition-transform duration-300"><i class="fas fa-mobile-alt"></i></div>
                     <h3 class="text-2xl font-heading font-bold uppercase mb-4 text-dark group-hover:text-primary transition-colors">UGC Setups</h3>
                     <p class="mb-6 text-gray-600">Dedicated aesthetic corners and lifestyle backdrops designed specifically for User Generated Content creators and Reel trends.</p>
-                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark">View Options <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark inline-flex items-center group/link">View Options <i class="fas fa-arrow-right ml-2 group-hover/link:translate-x-1 transition-transform"></i></a>
                 </div>
             </div>
         </div>
@@ -287,13 +313,13 @@
         <div class="service-item group mb-0">
             <div class="grid md:grid-cols-2 items-center">
                 <div class="md:order-2 overflow-hidden h-96">
-                    <img class="zig-zag-img w-full h-full object-cover" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" alt="Commercial">
+                    <img class="zig-zag-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800" alt="Commercial">
                 </div>
-                <div class="md:order-1 p-12 md:p-16 bg-secondary text-right">
-                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl ml-auto"><i class="fas fa-camera"></i></div>
+                <div class="md:order-1 p-12 md:p-16 bg-secondary text-right group-hover:bg-orange-50 transition-colors duration-300">
+                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 text-primary text-2xl ml-auto group-hover:scale-110 transition-transform duration-300"><i class="fas fa-camera"></i></div>
                     <h3 class="text-2xl font-heading font-bold uppercase mb-4 text-dark group-hover:text-primary transition-colors">Commercial Photography</h3>
                     <p class="mb-6 text-gray-600">Professional E-commerce shoots tailored for Amazon, Flipkart, Myntra, and D2C brands. Ghost mannequin and creative model shoots available.</p>
-                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark">Get Quote <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="https://wa.me/919372708977" class="text-primary font-bold uppercase tracking-widest hover:text-dark inline-flex items-center group/link">Get Quote <i class="fas fa-arrow-right ml-2 group-hover/link:translate-x-1 transition-transform"></i></a>
                 </div>
             </div>
         </div>
@@ -310,10 +336,10 @@
         <div class="grid md:grid-cols-3 gap-8">
             
             <!-- Amenity 1 -->
-            <div class="amenity-item group relative overflow-hidden shadow-lg rounded-xl">
+            <div class="amenity-item group relative overflow-hidden shadow-lg rounded-xl transform hover:-translate-y-2 transition-transform duration-300">
                 <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600" class="w-full h-80 object-cover" alt="Connectivity">
                 <div class="amenity-overlay absolute inset-0 flex flex-col justify-end p-6 text-white text-center pb-12">
-                    <div class="text-4xl mb-2"><i class="fas fa-wifi"></i></div>
+                    <div class="text-4xl mb-2 animate-bounce"><i class="fas fa-wifi"></i></div>
                     <h5 class="text-xl font-bold uppercase">High-Speed Connectivity</h5>
                     <p class="text-sm opacity-90 mt-2">Dedicated leased line for seamless live streaming and instant uploads.</p>
                 </div>
@@ -323,11 +349,11 @@
             </div>
 
             <!-- Amenity 2 -->
-            <div class="amenity-item group relative overflow-hidden shadow-lg rounded-xl">
+            <div class="amenity-item group relative overflow-hidden shadow-lg rounded-xl transform hover:-translate-y-2 transition-transform duration-300">
                 <!-- UPDATED: Replaced Waiting Area image -->
                 <img src="https://github.com/icreatepixels/Savior-Logo/blob/bf6702fc274f84e5d0717ba4df6d80af878d306e/Gemini_Generated_Image_s2jkgs2jkgs2jkgs.png?raw=true" class="w-full h-80 object-cover" alt="Waiting Area">
                 <div class="amenity-overlay absolute inset-0 flex flex-col justify-end p-6 text-white text-center pb-12">
-                    <div class="text-4xl mb-2"><i class="fas fa-couch"></i></div>
+                    <div class="text-4xl mb-2 animate-bounce"><i class="fas fa-couch"></i></div>
                     <h5 class="text-xl font-bold uppercase">Waiting Area</h5>
                     <p class="text-sm opacity-90 mt-2">Comfortable seating space for your team and guests to relax.</p>
                 </div>
@@ -337,11 +363,11 @@
             </div>
 
             <!-- Amenity 3 -->
-            <div class="amenity-item group relative overflow-hidden shadow-lg rounded-xl">
+            <div class="amenity-item group relative overflow-hidden shadow-lg rounded-xl transform hover:-translate-y-2 transition-transform duration-300">
                 <!-- UPDATED: Replaced Makeup Room image -->
                 <img src="https://github.com/icreatepixels/Savior-Logo/blob/97dbc715c472a2042873ef81c1cce5ca59600099/Gemini_Generated_Image_qnn5e6qnn5e6qnn5.png?raw=true" class="w-full h-80 object-cover" alt="Makeup Room">
                 <div class="amenity-overlay absolute inset-0 flex flex-col justify-end p-6 text-white text-center pb-12">
-                    <div class="text-4xl mb-2"><i class="fas fa-magic"></i></div>
+                    <div class="text-4xl mb-2 animate-bounce"><i class="fas fa-magic"></i></div>
                     <h5 class="text-xl font-bold uppercase">Makeup Room</h5>
                     <p class="text-sm opacity-90 mt-2">Private, well-lit vanity area for talent to get ready.</p>
                 </div>
@@ -363,15 +389,15 @@
                 <h1 class="text-5xl font-heading font-bold text-dark">Creators Love Us</h1>
             </div>
             
-            <div class="relative bg-white p-12 rounded shadow-sm border-t-4 border-primary">
-                <i class="fas fa-quote-left text-4xl text-gray-200 mb-4 block absolute top-6 left-6"></i>
+            <div class="relative bg-white p-12 rounded shadow-sm border-t-4 border-primary hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-quote-left text-4xl text-gray-200 mb-4 block absolute top-6 left-6 animate-pulse"></i>
                 
                 <!-- Slides -->
                 <div id="testimonial-container">
                     <div class="testimonial-slide active">
                         <p class="text-xl text-gray-600 italic mb-6 leading-relaxed">"Hands down the best podcast studio in Navi Mumbai. The audio quality is broadcast-level and the team is super helpful!"</p>
                         <div class="flex items-center justify-center gap-4">
-                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"><i class="fas fa-user"></i></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-colors duration-300"><i class="fas fa-user"></i></div>
                             <div class="text-left">
                                 <h5 class="font-bold text-dark uppercase">Rahul S.</h5>
                                 <span class="text-primary text-sm uppercase tracking-wider">Tech YouTuber</span>
@@ -382,7 +408,7 @@
                     <div class="testimonial-slide">
                         <p class="text-xl text-gray-600 italic mb-6 leading-relaxed">"Used the Cyc wall for a fashion catalog shoot. The lighting setup and space were exactly what we needed. Highly recommended."</p>
                         <div class="flex items-center justify-center gap-4">
-                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"><i class="fas fa-user"></i></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-colors duration-300"><i class="fas fa-user"></i></div>
                             <div class="text-left">
                                 <h5 class="font-bold text-dark uppercase">Ananya M.</h5>
                                 <span class="text-primary text-sm uppercase tracking-wider">Fashion Photographer</span>
@@ -393,7 +419,7 @@
                     <div class="testimonial-slide">
                         <p class="text-xl text-gray-600 italic mb-6 leading-relaxed">"Seamless experience! We walked in, recorded 3 episodes back-to-back, and got the raw files instantly. Super efficient."</p>
                         <div class="flex items-center justify-center gap-4">
-                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"><i class="fas fa-user"></i></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-colors duration-300"><i class="fas fa-user"></i></div>
                             <div class="text-left">
                                 <h5 class="font-bold text-dark uppercase">Vikram D.</h5>
                                 <span class="text-primary text-sm uppercase tracking-wider">Podcast Host</span>
@@ -405,7 +431,7 @@
                     <div class="testimonial-slide">
                         <p class="text-xl text-gray-600 italic mb-6 leading-relaxed">"The makeup room and waiting area were perfect for our high-profile guests. The studio team handled everything professionally."</p>
                         <div class="flex items-center justify-center gap-4">
-                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"><i class="fas fa-user"></i></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-colors duration-300"><i class="fas fa-user"></i></div>
                             <div class="text-left">
                                 <h5 class="font-bold text-dark uppercase">Sarah J.</h5>
                                 <span class="text-primary text-sm uppercase tracking-wider">Corporate Communications</span>
@@ -417,7 +443,7 @@
                     <div class="testimonial-slide">
                         <p class="text-xl text-gray-600 italic mb-6 leading-relaxed">"Shot a music video here using the RGB lights on the Cyc wall. The footage looks insane! Definitely coming back."</p>
                         <div class="flex items-center justify-center gap-4">
-                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"><i class="fas fa-user"></i></div>
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-colors duration-300"><i class="fas fa-user"></i></div>
                             <div class="text-left">
                                 <h5 class="font-bold text-dark uppercase">Arjun K.</h5>
                                 <span class="text-primary text-sm uppercase tracking-wider">Musician</span>
@@ -446,7 +472,7 @@
             <div class="grid lg:grid-cols-2 gap-16">
                 <!-- Contact Info -->
                 <div>
-                    <a href="#" class="flex items-center gap-2 group mb-8">
+                    <a href="#" class="flex items-center gap-2 group mb-8 transition-transform hover:translate-x-2 duration-300">
                         <!-- Updated Footer Logo -->
                          <img src="https://github.com/icreatepixels/SavoirStudio/raw/82cbcf7b1ea448e0e1cc7b057a7e83de0df583a4/savoirlogoheader.png" alt="Savoir Studio" class="h-12 w-auto object-contain p-1" onerror="this.style.display='none'; document.getElementById('footer-fallback-logo').style.display='flex';">
                          
@@ -458,36 +484,36 @@
                     <p class="text-gray-400 mb-8">Navi Mumbai's most advanced creative studio space. We provide the tools, you provide the talent.</p>
                     
                     <div class="space-y-4 text-gray-300">
-                        <div class="flex items-center gap-4">
-                            <i class="fas fa-phone text-primary w-6"></i>
-                            <a href="tel:+919372708977" class="hover:text-primary transition-colors">+91 93727 08977</a>
+                        <div class="flex items-center gap-4 group/item">
+                            <i class="fas fa-phone text-primary w-6 group-hover/item:scale-125 transition-transform duration-300"></i>
+                            <a href="tel:+919372708977" class="hover:text-primary transition-colors hover:pl-1 duration-300">+91 93727 08977</a>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <i class="fas fa-envelope text-primary w-6"></i>
-                            <a href="mailto:ssbykmw@gmail.com" class="hover:text-primary transition-colors">ssbykmw@gmail.com</a>
+                        <div class="flex items-center gap-4 group/item">
+                            <i class="fas fa-envelope text-primary w-6 group-hover/item:scale-125 transition-transform duration-300"></i>
+                            <a href="mailto:ssbykmw@gmail.com" class="hover:text-primary transition-colors hover:pl-1 duration-300">ssbykmw@gmail.com</a>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <i class="fas fa-map-marker-alt text-primary w-6 mt-1"></i>
-                            <span>Office no 16, 1st floor, C-39A, Gami Industrial Park Pawane, Turbhe, Navi Mumbai, Maharashtra 400703</span>
+                        <div class="flex items-start gap-4 group/item">
+                            <i class="fas fa-map-marker-alt text-primary w-6 mt-1 group-hover/item:scale-125 transition-transform duration-300"></i>
+                            <span class="group-hover/item:text-white transition-colors duration-300">Office no 16, 1st floor, C-39A, Gami Industrial Park Pawane, Turbhe, Navi Mumbai, Maharashtra 400703</span>
                         </div>
                     </div>
 
                     <div class="flex gap-4 mt-8">
-                        <a href="#" class="w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:bg-primary hover:border-primary transition-all"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:bg-primary hover:border-primary transition-all"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:bg-primary hover:border-primary transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:bg-primary hover:border-primary transition-all hover:scale-110 duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:bg-primary hover:border-primary transition-all hover:scale-110 duration-300"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="w-10 h-10 border border-gray-600 rounded flex items-center justify-center hover:bg-primary hover:border-primary transition-all hover:scale-110 duration-300"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
 
                 <!-- Map / Action -->
-                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-primary transition-colors duration-300 transform hover:-translate-y-1 hover:shadow-lg">
                     <h3 class="text-2xl font-bold mb-6 font-heading">Ready to Shoot?</h3>
                     <p class="mb-8 text-gray-400">Launch offer available: Get 50% OFF on your first booking. Limited slots.</p>
-                    <a href="https://wa.me/919372708977" class="block w-full bg-primary text-white text-center font-bold uppercase tracking-widest py-4 hover:bg-orange-600 transition-all rounded mb-4">
+                    <a href="https://wa.me/919372708977" class="block w-full bg-primary text-white text-center font-bold uppercase tracking-widest py-4 hover:bg-orange-600 transition-all rounded mb-4 transform hover:scale-[1.02] duration-300">
                         <i class="fab fa-whatsapp mr-2"></i> Book via WhatsApp
                     </a>
                     <!-- UPDATED: Corrected Google Maps Link -->
-                    <a href="https://share.google/KAIiOd2YX8xiT3zl4" target="_blank" class="block w-full border border-gray-600 text-white text-center font-bold uppercase tracking-widest py-4 hover:bg-white hover:text-dark transition-all rounded">
+                    <a href="https://share.google/KAIiOd2YX8xiT3zl4" target="_blank" class="block w-full border border-gray-600 text-white text-center font-bold uppercase tracking-widest py-4 hover:bg-white hover:text-dark transition-all rounded transform hover:scale-[1.02] duration-300">
                         <i class="fas fa-map mr-2"></i> Get Directions
                     </a>
                 </div>
